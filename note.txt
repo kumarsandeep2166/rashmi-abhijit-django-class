@@ -1,0 +1,8 @@
+prequisites for django
+--------------------------
+function
+list, tuple
+array
+dictionary
+string
+data structure

@@ -1,0 +1,40 @@
+Functions
+------------
+1. a group of statements that is used to execute a single task
+2. the main purpose of function is to perform a single task repeatedly.
+3. once a function is declared means it can be called or used anywhere according to the
+    requirement.
+4. it of 2 types
+    a. Built-in Functions
+    b. user defined Functions
+5. functions are called reusable codes to avoid redundancy
+6. functions are used to divide a main task into sub parts.
+7. functions are used to make programming easy.
+
+Difference between function and method
+--------------------------------------
+1. when a function is defined inside a class then it is called method.
+2. when it declared outside then it is a function
+
+functions can be called by 2 ways
+1. objectname.functionname()
+2. classname.functionname()
+
+
+it is declared by using 'def' keyword.
+function declaration
+--------------------
+def functionname():
+    return statements
+
+def functionname(parameter1, parameter2):
+    return statements
+
+def functionname():
+    print()
+
+print("the result is: ", x)
+
+
+
+
