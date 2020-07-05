@@ -6,3 +6,7 @@ array
 dictionary
 string
 data structure
+django
+django rest framework
+microservices
+numpy module in python
