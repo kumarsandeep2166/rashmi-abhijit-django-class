@@ -6,5 +6,5 @@ def even_odd(a):
     else:
         print("num is odd")
 
-x=int(input("Enter the number: "))
+x=int(input('enter a number: '))
 even_odd(x)
