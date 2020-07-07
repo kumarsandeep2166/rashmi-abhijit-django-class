@@ -8,15 +8,19 @@ def is_even(x):
     else:
         return False
 
-
 lst = [12,32,23,44,67,89,65,45,38]
+lst1=list(filter(is_even, lst))
+print(lst1)
 # def filter(function: None/ XYZ, iterable: Iterable[Optional[_T]])
 # filter(function or None, iterable) --> filter object
 # Return an iterator yielding those items of iterable for which function(item) is true. 
 # if function is None, return the items that are true.
-lst1=list(filter(is_even, lst))
-print(lst1)
-
 # another way
+# f = lambda x:x%2==0
 lst2 = list(filter(lambda x: (x%2==0),lst))
 print(lst2)
+# odd numbers
+lst3 = list(filter(lambda x:(x%2!=0), lst))
+print(lst3)
+lst4 = list(map(lambda x:x*x, lst))
+print(lst4)
