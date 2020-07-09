@@ -1,0 +1,20 @@
+list is a datastructure available in python
+indexing and slicing are the basic operations
+
+methods               example                   Description
+--------            -----------                ---------------
+index()             lst.index(x)            return the first occurance of x in the list
+append()            lst.append(x)           adds x at the end of the list
+insert(i, x)        lst.insert(i,x)         inserts x at i position
+copy()              lst.copy()              copies all element into a new list
+extend()            lst.extend(list)        adds another list to the existing list
+count()             lst.count(c)            counts total number of occurances of x in the list
+remove()            lst.remove(x)           removes x from list
+pop()               lst.pop()               removes the ending element from the list
+pop(x)              lst.pop(i)              removes the index i th element from the list
+sort()              lst.sort()              sorts the elements of the list in ascending order
+sort()              lst.sort(reverse=True)  sorts the elements of the list in descending order
+reverse()           lst.reverse()           it reverses the list
+clear()             lst.clear()             it clears the list(deletes all element from list)
+
+
