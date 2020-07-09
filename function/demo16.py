@@ -21,3 +21,16 @@ print(lst1)
 # another way
 lst2 = list(map(lambda x: x*x, lst))
 print(lst2)
+
+x = [1,2,3,4,5,6]
+y = [12,23,43,54,65,67]
+a = list(map(lambda x,y: y+x, x,y))
+print(a)
+b = list(map(lambda x,y: y-x, x,y))
+print(b)
+c = list(map(lambda x,y: y*x, x,y))
+print(c)
+a = list(map(lambda x,y: y/x, x,y))
+print(a)
+a = list(map(lambda x,y: y//x, x,y))
+print(a)

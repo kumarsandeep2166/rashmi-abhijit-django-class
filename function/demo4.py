@@ -4,7 +4,6 @@
 # start a loop from 2.
 # make the loop true for each time a number get checked.
 # make a counter value that counts the prime numbers.
-
 def prime_check(n):
     x=1
     for i in range(2,n):

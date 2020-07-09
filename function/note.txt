@@ -35,6 +35,17 @@ def functionname():
 
 print("the result is: ", x)
 
+Lambda
+------------
+Lambda is also called as anonymous function
+def keyword is not used
+lambda is itself a keyword used for executing a function
+
+
+f = lambda argument_list : expression
+f = lambda x:x*x
+value = f(2)
+
 
 
 

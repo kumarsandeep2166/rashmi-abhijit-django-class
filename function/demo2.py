@@ -16,3 +16,10 @@ print("factorial of n is :", fact(10))
 # range() is itself an array
 for i in range(1,11):
     print("factorial of {} is:{}".format(i, fact(i)))
+
+# shortcut for finding odd number series
+for i in range(1,11,2):
+    print(i)
+# shortcut for even number series
+for i in range(0, 11,2):
+    print(i)
