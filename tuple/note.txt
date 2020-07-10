@@ -1,0 +1,19 @@
+Tuple
+---------
+tuples are similar to list.
+But it is immutable means the value which are stored once cannot be changed or modified
+once the size is defined means the size is fixed.
+so append(), insert(), pop(), remove(), extend(), clear() functions cannot be applied to tuples
+tuples are denoted with '()'.
+we can also define empty tuples
+functions
+name               example               description
+-------------------------------------------------------
+len()           len(tup)            calculates the lenght of tuples
+max(tup)        max(tup)             return the maximum element
+min(tup)        min(tup)             return the minimum element
+count()         tup.count(x)          return the number of occurances of tup
+index()         tup.index(x)          return the first occurance of x
+sorted()        sorted(tup)            returns soretd tupl in ascending order
+sorted()        sorted(tup, reverse=True)   returns soretd tupl in descending order
+
