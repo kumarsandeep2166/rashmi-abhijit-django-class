@@ -1,5 +1,6 @@
 # calculate gross salary and net salary of an employee
 
+
 def da(basic):
     """da is 80% of basic"""
     da = basic*80/100
@@ -26,3 +27,8 @@ def itax(gross):
 
 # net = gross-pf(basic)-itax(gross)
 # print('your net salary is: ', net)
+
+
+value=int(input("input gross"))
+# value2=int(input("input ba"))
+print(hra(value))
