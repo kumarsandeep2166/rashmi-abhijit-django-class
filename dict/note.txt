@@ -1,0 +1,33 @@
+dictionary is a data structure available in python where the elements are stored in the form of key and value.
+this means one key has one value.
+the first element is considered as the key and the second element is considered as value.
+the key and values are differentiated by (:).
+{'a':12}--- a is the key and 12 is the value of a
+all the key and value pairs are stored inside {}
+indexing and slicing operation is not possible in dictionary
+the keys must be unique means once a key is used cannot be duplicated.but the values can be duplicated.
+d={'a':12, 'b':13,'c':14,'d':15,'e':16}
+d={}
+methods
+--------
+name              example                 description
+----------------------------------------------------------------------
+clear()          d.clear()                 removes all elements from dictionary
+copy()           d1=d.copy()               copies all element from d to d1
+fromkeys()       d.fromkeys(s[,v])         create a new dictionary with keys from sequence 's'
+                                            and values all set to value
+
+get()           d.get(k[,v])               returns the value associated with the key'k'. it returns v
+                                             if k is not found,it returns -1                    
+
+items()         d.items()                   returns an object that contains key-value pairs of d.
+                                            the pairs are stored as tuples in the object
+
+keys()          d.keys()                    returns a sequence of keys from dictionary 'd'
+values()        d.values()                  returns a sequence of values from dictionary 'd'
+update()        d.update(x)                 adds all element from dictionary 'x' to 'd'
+pop()           d.pop(k[,v])                removes the key'k' and its value from 'd'
+
+
+find the occurance of each letter present in the string using dictionary
+str = "Temple City Bhubaneswar"

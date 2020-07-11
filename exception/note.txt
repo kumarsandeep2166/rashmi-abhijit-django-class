@@ -1,0 +1,88 @@
+Exception is an abnormal case
+this abnormality should be avoided by using Exception handling process
+types of errors
+---------------
+compile time errors (syntax related error)
+Runtime errors
+logical errors
+
+Exceptions
+-----------
+it is a runtime error which needs to be handled by the programmer.
+all exceptions in python are builtin classes.
+
+The base class of all Exception class id BaseException
+
+            BaseException
+            -------------
+                |
+                |
+            Exception
+    ------------------------------------------
+    |                                         |
+    StandardError                           Warning
+    -------------                           --------
+    |                                           |
+    ArithmeticError                     DeprecationWarning
+    AssertionError                      RuntimeWarning
+    SyntaxError                         ImportWarning
+    TypeError
+    EOFError
+    RuntimeError
+    ImportError
+    NameError 
+    ValueError  
+
+process
+--------
+step-1
+-----------
+use of try statement
+------------------
+try:
+    statement 1
+    statement 2
+    statement 3
+the use of try block is that even if some exceptions occur, it handles by not terminating the program.
+When the PVM understands there is an exception then the code jumps directly to the except block
+
+step-2:
+-------
+use of except block
+-----------------
+when try block gives error except block handles it.
+
+except ValueError:
+    statements
+
+use of exceptionname is not mandatory
+
+step-3:
+------
+finally:
+    statements
+finally blocks generally used to write cleanup codes like closing of file, closing connection to database
+terminating any other process etc..
+the advantage of finally block is it executes everytime no matter what the situation is.
+means program will not be terminated in any case.
+
+-- a single try block can have several except blocks
+-- Multiple except blocks can be used to handle mutiple exceptions
+-- we cannot write except block without try block
+-- we can write try block without except and finally block
+
+
+try:
+    statements
+except handler1:
+    statements
+except handler2:
+    statements
+finally:
+    statements
+else:
+    statements
+
+***>when there is no exception else block is executed after try block if present
+***> finally block always executed
+***> without except block else block cannot be used
