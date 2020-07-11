@@ -1,0 +1,6 @@
+f = open('note.txt', 'r+')
+str = f.read()
+print(str)
+str = input('Enter something :  ')
+f.write(str)
+f.close()
