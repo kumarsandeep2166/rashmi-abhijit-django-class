@@ -1,0 +1,17 @@
+to know all dependencies which are used in existing django project or environment 
+--- pip freeze > requirement.txt
+
+views
+------
+2 types
+1. Function based views
+2. Class based views
+
+operation
+------------
+CURD
+C- - create---- post() 
+U -- Update ---- put/ patch()
+R -- Retrieve -- get()
+D -- Delete ---- delete()
+
