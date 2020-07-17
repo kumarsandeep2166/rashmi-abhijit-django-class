@@ -3,6 +3,8 @@ from django.http import HttpResponse, JsonResponse
 import json
 from django.views.generic import View
 from .models import Employee
+# from django.core.serializers import serialize
+from demo.mixin import SerializeMixin
 # Create your views here.
 def simpleview(request):
     emp_data = {
@@ -48,3 +50,10 @@ class SimpleViewGETCBV(View):
             return HttpResponse(json_data, content_type='application/json')
         else:
             return HttpResponse(json_data, content_type='application/json')
+
+class SimpleListCBV(SerializeMixin,View):
+    def get(self, requst, *args, **kwargs):
+        qs = Employee.objects.all()
+        # make the queryset serialize
+        json_data = self.serialize(qs)        
+        return HttpResponse(json_data, content_type='application/json')
