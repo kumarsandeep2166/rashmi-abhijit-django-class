@@ -1,0 +1,42 @@
+[
+{
+    "model": "demo.employee",
+    "pk": 1,
+    "fields": {
+        "name": "sandeep",
+        "roll": 100,
+        "marks": 150.0,
+        "addr": "BBSR"
+    }
+},
+{
+    "model": "demo.employee",
+    "pk": 2,
+    "fields": {
+        "name": "Rasmi",
+        "roll": 200,
+        "marks": 250.0,
+        "addr": "BBSR"
+    }
+},
+{
+    "model": "demo.employee",
+    "pk": 3,
+    "fields": {
+        "name": "Abhijit",
+        "roll": 300,
+        "marks": 350.0,
+        "addr": "BBSR"
+    }
+},
+{
+    "model": "demo.employee",
+    "pk": 4,
+    "fields": {
+        "name": "Gopi",
+        "roll": 400,
+        "marks": 500.0,
+        "addr": "Chennai"
+    }
+}
+]

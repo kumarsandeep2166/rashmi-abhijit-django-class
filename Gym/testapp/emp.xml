@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+    <object model="demo.employee" pk="1">
+        <field name="name" type="CharField">sandeep</field>
+        <field name="roll" type="IntegerField">100</field>
+        <field name="marks" type="FloatField">150.0</field>
+        <field name="addr" type="TextField">BBSR</field>
+    </object>
+    <object model="demo.employee" pk="2">
+        <field name="name" type="CharField">Rasmi</field>
+        <field name="roll" type="IntegerField">200</field>
+        <field name="marks" type="FloatField">250.0</field>
+        <field name="addr" type="TextField">BBSR</field>
+    </object>
+    <object model="demo.employee" pk="3">
+        <field name="name" type="CharField">Abhijit</field>
+        <field name="roll" type="IntegerField">300</field>
+        <field name="marks" type="FloatField">350.0</field>
+        <field name="addr" type="TextField">BBSR</field>
+    </object>
+    <object model="demo.employee" pk="4">
+        <field name="name" type="CharField">Gopi</field>
+        <field name="roll" type="IntegerField">400</field>
+        <field name="marks" type="FloatField">450.0</field>
+        <field name="addr" type="TextField">BBSR</field>
+    </object>
+</django-objects>

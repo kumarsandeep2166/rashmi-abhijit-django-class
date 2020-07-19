@@ -15,3 +15,76 @@ U -- Update ---- put/ patch()
 R -- Retrieve -- get()
 D -- Delete ---- delete()
 
+How to copy the json and xml data from command prompt
+py manage.py demo.Employee --format json > emp.json --indent 4
+py manage.py demo.Employee --format xml > emp.xml --indent 4
+
+{% csrf_token %}
+Server Error
+------------
+Forbidden (CSRF cookie not set.): /apicbv/
+
+1. Method level
+---------------
+from django.views.decorators.csrf import csrf_exempt
+
+2. class level
+---------------
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorator import method_decorator
+
+@method_decorator(csrf_exempt, name='dispatch')
+
+3. global level
+---------------
+setting.py csrf---comment line
+
+purpose - sending json data to django and save the data in database
+
+1. check the data is in json format or not
+
+If the method is post and during before or after processing the data,
+if we perform some activity then we must require middleware.
+
+Mixin(Mixed In)
+--------------
+in django Mixin is a parent class
+it's purpose is to provide several functions or functionality to the child class
+the mixin class must be inherited from object class.
+MIxin class acts as a parent class
+But it has no value for parent classes. It is only for child class
+Generally we don't create the object of mixin class rather the class is imported and the functionalities are 
+    implemented at desired location
+
+it is used when direct child class of object to be implemented.
+In case of abstract base class it is used.
+
+Mixin                                                       
+-----------------------------------------                
+
+1. Parent class instantiation(object creation) not possible
+2. parent class contains only instance methods but not instance varibales.
+3. Methods are only useful for child classes not for the same class
+4. parent class should be direct child class of object.
+
+Multiple inheritance
+--------------------
+1. Parent class instantiation(object creation) is possible.
+2. parent class contains instance methods as well as instance varibales.
+3. Methods are only useful for child classes and for the same class
+4. it can extend to any class also need not to be inherited from object class only.
+
+original_data = {
+    'name':emp.name,
+    'roll':emp.roll,
+    'marks':emp.marks,
+    'addr':emp.addr,
+}
+provided_data = {
+    'marks':500,
+    'addr':'Chennai'
+}
+original_data.update(provided_data)
+
+form = EmployeeForm(original_data, instance=emp) ---- the exisitng report will be updated.
+form = EmployeeForm(original_data) --- A new record will be created
