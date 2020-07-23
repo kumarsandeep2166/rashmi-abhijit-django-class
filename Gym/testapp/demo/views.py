@@ -125,3 +125,92 @@ class SimpleListCBV(SerializeMixin,HttpResponseMixin,View):
         if form.errors:
             json_data = json.dumps(form.errors)
             return self.render_to_http_response(json_data, status=400)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class SingleCRUDView(SerializeMixin, HttpResponseMixin, View):
+    def get_object_by_id(self, id):
+        try:
+            emp = Employee.objects.get(id=id) 
+        except Employee.DoesNotExist:
+            emp=None
+        return emp
+    
+    def get(self, request, *args, **kwargs):
+        data = request.body
+        valid_json = is_json(data)
+        if not valid_json:
+            json_data = json.dumps({'msg':'please provide valid json data'})
+            return self.render_to_http_response(json_data, status=400)
+        pdata = json.loads(data)
+        id = pdata.get('id', None)
+        if id is not None:
+            emp = self.get_object_by_id(id=id)
+            if emp is None:
+                json_data = json.dumps({'msg':'Matched Resource Not Found'})
+                return self.render_to_http_response(json_data, status=404)
+            json_data = self.serialize([emp,])
+            return self.render_to_http_response(json_data)
+        qs = Employee.objects.all()
+        json_data = self.serialize(qs)
+        return self.render_to_http_response(json_data)
+
+    def post(self, request, *args, **kwargs):
+        data = requst.body
+        valid_json = is_json(data)
+        if not valid_json:
+            json_data = json.dumps({'msg':'please send appropriate data'})
+            return self.render_to_http_response(json_data, status=400)
+        empdata = json.loads(data)
+        form = EmployeeForm(empdata)
+        if form.is_valid():
+            form.save(commit=True)
+            json_data = json.dumps({'msg':'resource added successfully'})
+            return self.render_to_http_response(json_data)        
+        if form.errors:
+            json_data = json.dumps(form.errors)
+            return self.render_to_http_response(json_data, status=400)
+
+    def put(self, request, *args, **kwargs):
+        data = request.body
+        valid_json = is_json(data)
+        if not valid_json:
+            json_data = json.dumps({'msg':'please send appropriate data'})
+            return self.render_to_http_response(json_data, status=400)
+        pdata = json.loads(data)
+        id = pdata.get('id', None)
+        if id is not None:
+            emp = self.get_object_by_id(id=id)
+            if emp is None:
+                json_data = json.dumps({'msg':'Matched Resource Not Found'})
+                return self.render_to_http_response(json_data, status=404)
+        original_data ={
+            'name':emp.name,
+            'roll':emp.roll,
+            'marks':emp.marks,
+            'addr':emp.addr,
+            }
+        original_data.update(pdata)
+        form = EmployeeForm(original_data, instance=emp)
+        if form.is_valid():
+            form.save(commit=True)
+            json_data = json.dumps({'msg':'resource added successfully'})
+            return self.render_to_http_response(json_data)        
+        if form.errors:
+            json_data = json.dumps(form.errors)
+            return self.render_to_http_response(json_data, status=400)
+
+    def delete(self, request, *args, **kwargs):
+        emp = self.get_object_by_id(id)
+        if emp is None:
+            json_data = json.dumps({'msg':'Matched Resource Not Found, Please try Again'})
+            return self.render_to_http_response(json_data, status=404)
+        t = emp.delete()
+        print(t)
+        status,deleted_item = emp.delete()
+        if status == 1:
+            json_data = json.dumps({'msg':'Your Data Deleted Successfully'})
+            return self.render_to_http_response(json_data)
+        else:
+            json_data = json.dumps({'msg':'Sorry!!!! Please try Again'})
+            return self.render_to_http_response(json_data, status=404)
+        
