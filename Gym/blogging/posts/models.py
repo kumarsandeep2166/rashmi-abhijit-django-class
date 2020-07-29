@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-
+from tinymce import HTMLField
 
 # Create your models here.
 
@@ -30,13 +30,26 @@ class Post(models.Model):
     categories = models.ManyToManyField(Category)
     thumbnail = models.ImageField(upload_to='media/')
     featured = models.BooleanField()
+    content = HTMLField('content')
+    previous_post = models.ForeignKey('self',related_name='previous',on_delete=models.SET_NULL, blank=True, null=True)
+    next_post = models.ForeignKey('self', related_name='next',on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     return reverse('post-detail', kwargs={
+    # look_up_field = 'id'
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={
+            'pk':self.pk
+        })
+    
+    # def get_update_url(self):
+    #     return reverse('post-update',kwargs={
     #         'id':self.id
     #     })
-
+    # def get_delete_url(self):
+    #     return reverse('post-delete',kwargs={
+    #         'id':self.id
+    #     })
 

@@ -10,7 +10,7 @@
               <!-- post -->
               {% for post in post_list %}
               <div class="post col-xl-6">
-                <div class="post-thumbnail"><a href="#"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
+                <div class="post-thumbnail"><a href="{{ post.get_absolute_url }}"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
                 <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">                    
                     <div class="category">
@@ -18,7 +18,7 @@
                       <a href="#">{{ cat }}</a>
                       {% endfor %}
                     </div>
-                  </div><a href="#">
+                  </div><a href="{{ post.get_absolute_url }}">
                     <h3 class="h4">{{ post.title }}</h3></a>
                   <p class="text-muted">{{ post.overview }}</p>
                   <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -52,10 +52,11 @@
             <div class="widget search">
                 <header>
                 <h3 class="h6">Search the blog</h3>
+                {% csrf_token %}
                 </header>
-                <form action="#" class="search-form">
+                <form action="{% url 'search' %}" class="search-form">
                 <div class="form-group">
-                    <input type="search" placeholder="What are you looking for?">
+                    <input type="text" name="q" placeholder="What are you looking for?">
                     <button type="submit" class="submit"><i class="icon-search"></i></button>
                 </div>
                 </form>
@@ -67,7 +68,7 @@
                 </header>
                 <div class="blog-posts">
                   {% for most in latest_post %}
-                    <a href="#">
+                    <a href="{{ most.get_absolute_url }}">
                         <div class="item d-flex align-items-center">
                         <div class="image"><img src="{{ most.thumbnail.url}}" alt="..." class="img-fluid"></div>
                         <div class="title"><strong>{{ most.title }}</strong>
@@ -97,11 +98,9 @@
                 <h3 class="h6">Tags</h3>
                 </header>
                 <ul class="list-inline">
-                <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-                <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-                <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-                <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-                <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+                    {% for cat in category_count %}
+                <li class="list-inline-item"><a href="#" class="tag">#{{ cat.categories__title }}</a></li>                
+                {% endfor %}
                 </ul>
             </div>
         </aside>

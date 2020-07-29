@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from .models import Post, Author, Category
 from marketing.models import Signup
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
@@ -10,6 +10,20 @@ def get_category_count():
     # to count howmany times the object has been used and the result always stored in an dictionary
     print(category_count)
     return category_count
+
+def search(request):
+    post = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset = post.filter(
+            Q(title__icontains=query)|
+            Q(overview__icontains=query) 
+        ).distinct()
+    context = {
+        'queryset':queryset
+    }
+    return render(request, 'search_results.html', context)
+
 
 def index(request):
     queryset = Post.objects.filter(featured=True)
@@ -30,8 +44,16 @@ def index(request):
     return render(request, 'index.html' , context)
 
 
-def posts(request):
-    return render(request, 'post.html')
+def posts(request, pk):
+    category_count  = get_category_count()
+    most_recent = Post.objects.order_by('-timestamp')[:3]
+    post = get_object_or_404(Post, pk=pk)
+    context = {
+        'category_count':category_count,
+        'most_recent':most_recent,
+        'post':post,
+    }
+    return render(request, 'post.html', context)
 
 
 
@@ -39,7 +61,7 @@ def blogs(request):
     category_count  = get_category_count()
     post_list = Post.objects.all()
     latest_post = Post.objects.order_by('-timestamp')[:3]
-    paginator = Paginator(post_list,2)
+    paginator = Paginator(post_list,4)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:
