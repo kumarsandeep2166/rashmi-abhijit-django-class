@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Author, Category
+from .models import Post, Author, Category, Comment, PostView
 # Register your models here.
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -14,3 +14,5 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Author)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment)
+admin.site.register(PostView)

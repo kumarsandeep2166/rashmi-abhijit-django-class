@@ -1,0 +1,43 @@
+Functions Based
+----------------
+1. Simple to define
+2. Easy to callable
+3. no explicit modules required to inherit
+4. Process is not secure
+5. Multiple requests cannot be handled.
+6. Easy to cutomise 
+7. Hard to extend and reuse the code
+8. Handling of HTTP methods via conditional branching
+
+class Based Views
+-----------------
+1. Quiet difficult to customise
+2. Mutiple requests can be easily handled.
+3. explicit modules are required to perform actions
+4. It is defined under a class so it must have class properties.
+5. Better code reusablity
+6. process is much secure than FBV
+7. Can use O.O techniques such as mixins (multiple inheritance)
+8. Handling of HTTP methods by separate class methods
+9. Built-in generic class-based views
+    Simple Generic Views
+        View
+        TemplateView
+        RedirectView
+    Detail Views
+        DetailView (takes id or pk as parameter to retrieve detalils)
+    List Views
+        ListView (lists out all the datas)
+    Editing Views
+        FormView (Takes form as parameter and displays the form data)
+        CreateView (creates an instance with a new id)
+        UpdateView (Updates an exisiting instance with the help of id)
+        DeleteView (Deletes an exisiting instance with the help of id)
+    Date-Based Views
+        ArchiveIndexView
+        YearArchiveView
+        MonthArchiveView
+        WeekArchiveView
+        DayArchiveView
+        TodayArchiveView
+        DateDetailView

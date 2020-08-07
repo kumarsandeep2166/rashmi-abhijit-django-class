@@ -8,7 +8,7 @@
           <div class="container">
             <div class="row">
               <!-- post -->
-              {% for post in post_list %}
+              {% for post in queryset %}
               <div class="post col-xl-6">
                 <div class="post-thumbnail"><a href="{{ post.get_absolute_url }}"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
                 <div class="post-details">
@@ -36,12 +36,12 @@
             <!-- Pagination -->
             <nav aria-label="Page navigation example">
               <ul class="pagination pagination-template d-flex justify-content-center">
-                {% if post_list.has_previous %}
-                <li class="page-item"><a href="?{{ page_request_var }}={{ post_list.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
                 {% endif %}
-                <li class="page-item"><a href="?{{ page_request_var }}={{ post_list.number }}" class="page-link active">{{ post_list.number }}</a></li>      
-                {% if post_list.has_next %}          
-                <li class="page-item"><a href="?{{ page_request_var }}={{ post_list.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                <li class="page-item"><a href="?page={{ page_obj.number }}" class="page-link active">{{ page_obj.paginator.num_pages }}</a></li>      
+                {% if page_obj.has_next %}          
+                <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
                 {% endif %}
               </ul>
             </nav>
